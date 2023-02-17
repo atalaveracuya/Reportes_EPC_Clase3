@@ -67,7 +67,7 @@ titanic$Pclass <- as.factor(titanic$Pclass)
 ggplot2::ggplot(data = titanic,
                  mapping = aes(Survived, fill=Survived))+
   geom_bar() + 
-  scale_fill_manual(values=c("red" , "blue")) 
+  scale_fill_manual(values=c("orange" , "blue")) 
 ```
 
 
