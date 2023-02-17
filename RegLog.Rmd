@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 # Introducción 
@@ -34,7 +34,7 @@ $$[Y=1|X=x] = \frac{exp(\beta^{T}x)}{1 + exp(\beta^{T}x)}$$
 
 # Ejemplo en R 
 
-```{r CargaLibrerias, echo=FALSE}
+```{r CargaLibrerias, eval=FALSE}
 library(ggplot2)
 library(corrplot)
 library(car)
@@ -43,5 +43,31 @@ library(PerformanceAnalytics)
 library(cowplot)
 ```
 
+```{r CargarDaos, include=TRUE}
+titanic <- read.csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+colnames(titanic)
+
+```
+
+## Algunos gráficos 
+
+Consideremos:
+
+* La variable dependiente Survived
+
+* La variable Pclass
+
+* La variable Age 
+
+
+```{r PrimerGrafico}
+library(ggplot2)
+titanic$Survived <- as.factor(titanic$Survived)
+titanic$Pclass <- as.factor(titanic$Pclass)
+ggplot2::ggplot(data = titanic,
+                 mapping = aes(Survived, fill=Survived))+
+  geom_bar() + 
+  scale_fill_manual(values=c("red" , "blue")) 
+```
 
 
